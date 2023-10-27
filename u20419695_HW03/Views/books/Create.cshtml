@@ -1,0 +1,63 @@
+﻿@model u20419695_HW03.Models.borrow
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.book.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.book.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.book.name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.book.pagecount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.book.pagecount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.book.pagecount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.book.point, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.book.point, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.book.point, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.book.authorId, "authorId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.book.authorId, (SelectList)ViewBag.authorId, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.book.author.authorId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.book.typeId, "typeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.book.typeId, (SelectList)ViewBag.typeId, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.book.type.typeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary" value="Create">Create</button>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
